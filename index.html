@@ -5,79 +5,297 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio Grafika</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animacja fade-in */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 1s ease-out;
+    }
+  
+    /* Przycisk hover dla kart */
+    .card-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+  
+    /* Ustawienia dla scrollowania */
+    .scroll-smooth {
+      scroll-behavior: smooth;
+    }
+  
+    /* Przyciski kategorii */
+    .category-button {
+      padding: 14px 30px;
+      background-color: #3498db;
+      border-radius: 50px;
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .category-button:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
+    }
+  
+    /* Nagłówek sekcji "Moje projekty" */
+    .projekty-header {
+      background: linear-gradient(135deg, #8e44ad, #f7c5f0);
+      color: white;
+      padding: 4rem;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 1600px;
+      margin: 0 auto;
+    }
+    .projekty-header h3 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+  
+    /* Tło sekcji kategorii */
+    .category-bg {
+      background-color: #f2f2f2;
+      padding: 3rem;
+      border-radius: 15px;
+      width: 1600px;
+      margin: 2rem auto;
+    }
+  
+    /* Styl nagłówków kategorii */
+    .category-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+  
+    /* Tło dla nagłówków kategorii */
+    .category-title-bg {
+      background-color: #3498db;
+      padding: 1rem 0;
+      width: 1600px;
+      margin: 0 auto;
+      text-align: center;
+      border-radius: 10px;
+    }
+  
+    /* Styl dla obrazów w projektach */
+    /* Domyślny rozmiar dla obrazów */
+    .project-img {
+      border-radius: 12px;
+      width: auto;
+      height: 700px;
+      object-fit: cover;
+    }
+  
+    /* Kategoria Plakaty */
+    #plakaty .project-img {
+      height: 700px;
+    }
+  
+    /* Kategoria Loga */
+    #loga .project-img {
+      height: 500px;
+    }
+  
+    /* Kategoria Inne */
+    #inne .project-img {
+      height: auto;
+      width: auto;
+      object-position: center;
+    }
+  
+    /* Przycisk formularza */
+    .form-button {
+      background-color: #3498db;
+      hover:bg-blue-700;
+      color: white;
+      font-weight: bold;
+      padding: 16px 30px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .form-button:hover {
+      background-color: #2980b9;
+    }
+  </style>  
+
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-white text-gray-800 scroll-smooth">
 
   <!-- Header -->
-  <header class="bg-white shadow p-6">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-bold">Jan Kowalski</h1>
-      <nav class="space-x-6">
-        <a href="#projekty" class="hover:text-blue-500">Projekty</a>
-        <a href="#o-mnie" class="hover:text-blue-500">O mnie</a>
-        <a href="#kontakt" class="hover:text-blue-500">Kontakt</a>
+  <header class="bg-white shadow-md p-8 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-4xl font-bold text-blue-600">Wiktor Poczta</h1>
+      <nav class="space-x-8 text-xl">
+        <a href="#projekty" class="hover:underline hover:text-blue-500 transition">Projekty</a>
+        <a href="#o-mnie" class="hover:underline hover:text-blue-500 transition">O mnie</a>
+        <a href="#kontakt" class="hover:underline hover:text-blue-500 transition">Kontakt</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-20 bg-gradient-to-r from-blue-400 to-purple-500 text-white">
-    <h2 class="text-5xl font-extrabold mb-4">Cześć! Jestem grafikiem</h2>
-    <p class="text-xl">Tworzę nowoczesne i kreatywne projekty graficzne</p>
-  </section>
-
-  <!-- Projekty -->
-  <section id="projekty" class="container mx-auto py-16">
-    <h3 class="text-4xl font-bold text-center mb-12">Moje projekty</h3>
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Projekt 1 -->
-      <div class="bg-white rounded-2xl shadow p-6 hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/400x300" alt="Projekt 1" class="rounded-lg mb-4">
-        <h4 class="text-2xl font-semibold mb-2">Projekt 1</h4>
-        <p>Opis projektu graficznego, co zostało wykonane, dla kogo, jakie narzędzia.</p>
-      </div>
-      <!-- Projekt 2 -->
-      <div class="bg-white rounded-2xl shadow p-6 hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/400x300" alt="Projekt 2" class="rounded-lg mb-4">
-        <h4 class="text-2xl font-semibold mb-2">Projekt 2</h4>
-        <p>Opis projektu graficznego, co zostało wykonane, dla kogo, jakie narzędzia.</p>
-      </div>
-      <!-- Projekt 3 -->
-      <div class="bg-white rounded-2xl shadow p-6 hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/400x300" alt="Projekt 3" class="rounded-lg mb-4">
-        <h4 class="text-2xl font-semibold mb-2">Projekt 3</h4>
-        <p>Opis projektu graficznego, co zostało wykonane, dla kogo, jakie narzędzia.</p>
-      </div>
+  <section class="text-center py-24 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+    <div class="container mx-auto px-4 animate-fadeInUp">
+      <h2 class="text-5xl font-extrabold mb-6">Cześć! Jestem grafikiem</h2>
+      <p class="text-xl font-light">Tworzę nowoczesne i kreatywne projekty graficzne</p>
     </div>
   </section>
 
+  <!-- Projekty -->
+  <section id="projekty" class="py-20 px-4">
+    <div class="projekty-header mb-16">
+      <h3>Moje projekty</h3>
+    </div>
+
+    <!-- Kategorie -->
+    <div class="flex justify-center gap-6 mb-16">
+      <a href="#plakaty" class="category-button">Plakaty</a>
+      <a href="#loga" class="category-button">Loga</a>
+      <a href="#inne" class="category-button">Inne</a>
+    </div>
+
+    <!-- Kategoria Plakaty -->
+    <div id="plakaty" class="project-category mb-12">
+      <div class="category-title-bg">
+        <h4 class="category-title">Plakaty</h4>
+      </div>
+      <div class="category-bg">
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Projekt 1 -->
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Derrick Rose Poster.jpg" alt="Projekt 1" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Poster The Matrix.jpg" alt="Projekt 1" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Matematyka.jpg" alt="Projekt 1" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Poster Boska Komedia.jpg" alt="Projekt 1" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Poster Dolny Śląsk.jpg" alt="Projekt 1" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Poster Electronics.jpg" alt="Projekt 1" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Poster Green Energy.jpg" alt="Projekt 1" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Poster Swimming.jpg" alt="Projekt 1" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Poster Misiu Z Okienka.jpg" alt="Projekt 1" class="project-img">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kategoria Loga -->
+    <div id="loga" class="project-category mb-12">
+      <div class="category-title-bg">
+        <h4 class="category-title">Loga</h4>
+      </div>
+      <div class="category-bg">
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Projekt 4 -->
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo KOP.jpg" alt="Projekt 4" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo V+P.jpg" alt="Projekt 4" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo P+V.jpg" alt="Projekt 4" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo Romet Bike.jpg" alt="Projekt 4" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo T+R.jpg" alt="Projekt 4" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo RedStyle.jpg" alt="Projekt 4" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo RomeTR.jpg" alt="Projekt 4" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo RometUp.jpg" alt="Projekt 4" class="project-img">
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+            <img src="Logo unTurtle.jpg" alt="Projekt 4" class="project-img">
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Kategoria Inne -->
+<div id="inne" class="project-category mb-12">
+    <div class="category-title-bg">
+      <h4 class="category-title">Inne</h4>
+    </div>
+    <div class="category-bg">
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
+        <!-- Projekt 7 - Pierwsze zdjęcie -->
+        <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+          <img src="Browser Layout-1.jpg" alt="Projekt 7" class="project-img">
+        </div>
+        <!-- Projekt 8 - Drugie zdjęcie -->
+        <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
+          <img src="Browser Layout-2.jpg" alt="Projekt 8" class="project-img">
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
   <!-- O mnie -->
-  <section id="o-mnie" class="bg-gray-200 py-16">
-    <div class="container mx-auto text-center">
-      <h3 class="text-4xl font-bold mb-8">O mnie</h3>
-      <p class="max-w-2xl mx-auto text-lg">
-        Jestem pasjonatem grafiki komputerowej z doświadczeniem w projektowaniu logo, identyfikacji wizualnej, stron internetowych i ilustracji. Moim celem jest tworzenie nie tylko estetycznych, ale także funkcjonalnych projektów.
+  <section id="o-mnie" class="bg-gray-100 py-20">
+    <div class="container mx-auto text-center px-4">
+      <h3 class="text-5xl font-bold mb-10 text-gray-900">O mnie</h3>
+      <p class="max-w-2xl mx-auto text-lg leading-relaxed text-gray-700">
+        Jestem pasjonatem grafiki komputerowej z doświadczeniem w projektowaniu logo, identyfikacji wizualnej, stron internetowych i ilustracji. 
+        Moim celem jest tworzenie nie tylko estetycznych, ale także funkcjonalnych projektów, które przyciągają uwagę i budują rozpoznawalność marki.
       </p>
     </div>
   </section>
 
   <!-- Kontakt -->
-  <section id="kontakt" class="container mx-auto py-16">
-    <h3 class="text-4xl font-bold text-center mb-8">Kontakt</h3>
-    <form class="max-w-xl mx-auto space-y-6">
-      <input type="text" placeholder="Imię i nazwisko" class="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400">
-      <input type="email" placeholder="Email" class="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400">
-      <textarea placeholder="Wiadomość" rows="5" class="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400"></textarea>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition">
-        Wyślij
-      </button>
+  <section id="kontakt" class="container mx-auto py-20 px-4">
+    <h3 class="text-4xl font-bold text-center mb-10">Kontakt</h3>
+    <form class="max-w-2xl mx-auto space-y-6">
+      <input type="text" placeholder="Imię i nazwisko" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-blue-400 shadow-sm transition">
+      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-blue-400 shadow-sm transition">
+      <textarea placeholder="Wiadomość" rows="5" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-blue-400 shadow-sm transition"></textarea>
+      <button type="submit" class="form-button w-full">Wyślij wiadomość</button>
     </form>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white py-6 mt-12">
-    <div class="container mx-auto text-center text-gray-500">
-      &copy; 2025 Jan Kowalski. Wszelkie prawa zastrzeżone.
+  <footer class="bg-white py-8">
+    <div class="container mx-auto text-center text-gray-500 text-sm px-4">
+      &copy; 2025 Wiktor Poczta. Wszelkie prawa zastrzeżone.
     </div>
   </footer>
 
