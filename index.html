@@ -1,303 +1,304 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="light scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio Grafika</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
   <style>
-    /* Animacja fade-in */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --primary-bg: #e9e9e9;
+      --secondary-bg: #dadada;
+      --card-bg: #e9e9e9;
+      --btn-bg: #303030;
+      --btn-hover-bg: #1BA0F2;
+      --btn-text: #ffffff;
+      --link-hover: #1BA0F2;
+      --dropdown-bg: #f5f5f5;
+      --dropdown-link: #303030;
+      --dropdown-hover: #f0f0f0;
+      --gradient-light: linear-gradient(to right, #1BA0F2, #0C87F2);
     }
-    .animate-fadeInUp {
-      animation: fadeInUp 1s ease-out;
+
+    .dark {
+      --bg-color: #212121;
+      --text-color: #ffffff;
+      --primary-bg: #303030;
+      --secondary-bg: #171717;
+      --card-bg: #171717;
+      --btn-bg: #000000;
+      --btn-hover-bg: #5F3DD9;
+      --btn-text: #ffffff;
+      --link-hover: #5F3DD9;
+      --dropdown-bg: #000000;
+      --dropdown-link: #e2e8f0;
+      --dropdown-hover: #000000;
+      --gradient-light: linear-gradient(to right, #5F3DD9, #44238C);
     }
-  
-    /* Przycisk hover dla kart */
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
     .card-hover:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
-  
-    /* Ustawienia dla scrollowania */
-    .scroll-smooth {
-      scroll-behavior: smooth;
-    }
-  
-    /* Przyciski kategorii */
-    .category-button {
-      padding: 14px 30px;
-      background-color: #3498db;
-      border-radius: 50px;
-      color: white;
-      text-transform: uppercase;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .category-button:hover {
-      background-color: #2980b9;
-      transform: scale(1.05);
-    }
-  
-    /* Nagłówek sekcji "Moje projekty" */
-    .projekty-header {
-      background: linear-gradient(135deg, #8e44ad, #f7c5f0);
-      color: white;
-      padding: 4rem;
-      text-align: center;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      width: 1600px;
-      margin: 0 auto;
-    }
-    .projekty-header h3 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-  
-    /* Tło sekcji kategorii */
+
     .category-bg {
-      background-color: #f2f2f2;
+      background-color: var(--primary-bg);
       padding: 3rem;
       border-radius: 15px;
-      width: 1600px;
+      max-width: 1600px;
       margin: 2rem auto;
     }
-  
-    /* Styl nagłówków kategorii */
+
     .category-title {
       font-size: 3rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-color);
       text-align: center;
       margin-bottom: 1rem;
-      letter-spacing: 1px;
     }
-  
-    /* Tło dla nagłówków kategorii */
+
     .category-title-bg {
-      background-color: #3498db;
-      padding: 1rem 0;
-      width: 1600px;
+      background-color: var(--secondary-bg);
+      padding: 25px;
+      max-width: 1600px;
       margin: 0 auto;
       text-align: center;
       border-radius: 10px;
+      margin-top: 2rem;
     }
-  
-    /* Styl dla obrazów w projektach */
-    /* Domyślny rozmiar dla obrazów */
+
     .project-img {
       border-radius: 12px;
-      width: auto;
-      height: 700px;
+      width: 100%;
+      height: auto;
       object-fit: cover;
     }
-  
-    /* Kategoria Plakaty */
-    #plakaty .project-img {
-      height: 700px;
-    }
-  
-    /* Kategoria Loga */
-    #loga .project-img {
-      height: 500px;
-    }
-  
-    /* Kategoria Inne */
-    #inne .project-img {
-      height: auto;
-      width: auto;
-      object-position: center;
-    }
-  
-    /* Przycisk formularza */
+
     .form-button {
-      background-color: #3498db;
-      hover:bg-blue-700;
-      color: white;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
       font-weight: bold;
       padding: 16px 30px;
       border-radius: 12px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
     }
+
     .form-button:hover {
-      background-color: #2980b9;
+      background-color: var(--btn-hover-bg);
+      transform: scale(1.05);
     }
-  </style>  
 
+    #scrollToTopBtn,
+    #toggleTheme {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 18px;
+      border-radius: 10px;
+      font-size: 18px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    #scrollToTopBtn:hover,
+    #toggleTheme:hover {
+      background-color: var(--btn-hover-bg);
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    #scrollToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+    }
+
+    #toggleTheme {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      #scrollToTopBtn {
+        bottom: 4rem;
+        right: 4rem;
+      }
+      #toggleTheme {
+        bottom: 4rem;
+        left: 4rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-800 scroll-smooth">
+<body>
 
-  <!-- Header -->
-  <header class="bg-white shadow-md p-8 sticky top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center px-4">
-      <h1 class="text-4xl font-bold text-blue-600">Wiktor Poczta</h1>
-      <nav class="space-x-8 text-xl">
-        <a href="#projekty" class="hover:underline hover:text-blue-500 transition">Projekty</a>
-        <a href="#o-mnie" class="hover:underline hover:text-blue-500 transition">O mnie</a>
-        <a href="#kontakt" class="hover:underline hover:text-blue-500 transition">Kontakt</a>
-      </nav>
-    </div>
-  </header>
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></button>
 
-  <!-- Hero -->
-  <section class="text-center py-24 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-    <div class="container mx-auto px-4 animate-fadeInUp">
-      <h2 class="text-5xl font-extrabold mb-6">Cześć! Jestem grafikiem</h2>
-      <p class="text-xl font-light">Tworzę nowoczesne i kreatywne projekty graficzne</p>
-    </div>
-  </section>
+<!-- Theme Toggle -->
+<button id="toggleTheme"><i id="themeIcon" class="fas fa-sun"></i></button>
 
-  <!-- Projekty -->
-  <section id="projekty" class="py-20 px-4">
-    <div class="projekty-header mb-16">
-      <h3>Moje projekty</h3>
-    </div>
+<!-- Header -->
+<header class="shadow-md p-6 sticky top-0 z-50" style="background-color: var(--card-bg); transition: background-color 0.3s;">
+  <div class="container mx-auto flex justify-between items-center px-4">
+    <h1 class="text-4xl font-bold">Wiktor Poczta</h1>
+    <nav class="flex space-x-8 text-xl items-center relative">
+      <a href="#o-mnie" class="hover:underline" style="color: var(--text-color);">O mnie</a>
+      <a href="#kontakt" class="hover:underline" style="color: var(--text-color);">Kontakt</a>
+      <button onclick="toggleSidebar()" class="hover:underline" style="color: var(--text-color);">Projekty</button>
+    </nav>
+  </div>
+</header>
 
-    <!-- Kategorie -->
-    <div class="flex justify-center gap-6 mb-16">
-      <a href="#plakaty" class="category-button">Plakaty</a>
-      <a href="#loga" class="category-button">Loga</a>
-      <a href="#inne" class="category-button">Inne</a>
-    </div>
+<!-- Sidebar Menu -->
+<div id="sidebar" class="fixed top-0 right-0 h-full w-64 bg-[var(--primary-bg)] text-[var(--text-color)] shadow-lg transform translate-x-full transition-transform duration-300 z-50 overflow-y-auto">
+  <div class="p-6 flex justify-between items-center border-b border-gray-300">
+    <h2 class="text-2xl font-semibold">Kategorie</h2>
+    <button onclick="toggleSidebar()" class="text-2xl">&times;</button>
+  </div>
+  <ul class="flex flex-col p-6 space-y-4 text-lg">
+    <li><a href="#plakaty" onclick="toggleSidebar()" class="hover:text-[var(--link-hover)]">Plakaty</a></li>
+    <li><a href="#loga" onclick="toggleSidebar()" class="hover:text-[var(--link-hover)]">Loga</a></li>
+    <li><a href="#wizytowki" onclick="toggleSidebar()" class="hover:text-[var(--link-hover)]">Wizytówki</a></li>
+    <li><a href="#inne" onclick="toggleSidebar()" class="hover:text-[var(--link-hover)]">Inne</a></li>
+  </ul>
+</div>
 
-    <!-- Kategoria Plakaty -->
-    <div id="plakaty" class="project-category mb-12">
-      <div class="category-title-bg">
-        <h4 class="category-title">Plakaty</h4>
-      </div>
-      <div class="category-bg">
-        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Projekt 1 -->
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Derrick Rose Poster.jpg" alt="Projekt 1" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Poster The Matrix.jpg" alt="Projekt 1" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Matematyka.jpg" alt="Projekt 1" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Poster Boska Komedia.jpg" alt="Projekt 1" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Poster Dolny Śląsk.jpg" alt="Projekt 1" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Poster Electronics.jpg" alt="Projekt 1" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Poster Green Energy.jpg" alt="Projekt 1" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Poster Swimming.jpg" alt="Projekt 1" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Poster Misiu Z Okienka.jpg" alt="Projekt 1" class="project-img">
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- Hero -->
+<section class="text-center py-24" style="background: var(--gradient-light); color: white;">
+  <div class="container mx-auto px-4">
+    <h2 class="text-5xl font-extrabold mb-6">Cześć! Jestem grafikiem</h2>
+    <p class="text-xl font-light">Tworzę nowoczesne i kreatywne projekty graficzne</p>
+  </div>
+</section>
 
-    <!-- Kategoria Loga -->
-    <div id="loga" class="project-category mb-12">
-      <div class="category-title-bg">
-        <h4 class="category-title">Loga</h4>
-      </div>
-      <div class="category-bg">
-        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Projekt 4 -->
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo KOP.jpg" alt="Projekt 4" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo V+P.jpg" alt="Projekt 4" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo P+V.jpg" alt="Projekt 4" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo Romet Bike.jpg" alt="Projekt 4" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo T+R.jpg" alt="Projekt 4" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo RedStyle.jpg" alt="Projekt 4" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo RomeTR.jpg" alt="Projekt 4" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo RometUp.jpg" alt="Projekt 4" class="project-img">
-          </div>
-          <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-            <img src="Logo unTurtle.jpg" alt="Projekt 4" class="project-img">
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- Kategoria Inne -->
-<div id="inne" class="project-category mb-12">
-    <div class="category-title-bg">
-      <h4 class="category-title">Inne</h4>
-    </div>
-    <div class="category-bg">
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
-        <!-- Projekt 7 - Pierwsze zdjęcie -->
-        <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-          <img src="Browser Layout-1.jpg" alt="Projekt 7" class="project-img">
-        </div>
-        <!-- Projekt 8 - Drugie zdjęcie -->
-        <div class="bg-white rounded-3xl shadow-lg card-hover transition duration-300">
-          <img src="Browser Layout-2.jpg" alt="Projekt 8" class="project-img">
-        </div>
-      </div>
+<!-- Projekty (Plakaty, Loga itd.) -->
+<!-- Plakaty -->
+<div id="plakaty" class="project-category mb-12">
+  <div class="category-title-bg">
+    <h4 class="category-title">Plakaty</h4>
+  </div>
+  <div class="category-bg">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <img src="Derrick Rose Poster.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Poster The Matrix.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Matematyka.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Poster Boska Komedia.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Poster Dolny Śląsk.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Poster Electronics.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Poster Green Energy.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Poster Swimming.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Poster Misiu Z Okienka.jpg" class="project-img card-hover" loading="lazy">
     </div>
   </div>
-  </section>
+</div>
 
-  <!-- O mnie -->
-  <section id="o-mnie" class="bg-gray-100 py-20">
-    <div class="container mx-auto text-center px-4">
-      <h3 class="text-5xl font-bold mb-10 text-gray-900">O mnie</h3>
-      <p class="max-w-2xl mx-auto text-lg leading-relaxed text-gray-700">
-        Jestem pasjonatem grafiki komputerowej z doświadczeniem w projektowaniu logo, identyfikacji wizualnej, stron internetowych i ilustracji. 
-        Moim celem jest tworzenie nie tylko estetycznych, ale także funkcjonalnych projektów, które przyciągają uwagę i budują rozpoznawalność marki.
-      </p>
+<!-- Loga -->
+<div id="loga" class="project-category mb-12">
+  <div class="category-title-bg">
+    <h4 class="category-title">Loga</h4>
+  </div>
+  <div class="category-bg">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <img src="Logo KOP.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Logo V+P.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Logo P+V.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Logo Romet Bike.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Logo T+R.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Logo RedStyle.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Logo RomeTR.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Logo RometUp.jpg" class="project-img card-hover" loading="lazy">
+      <img src="Logo unTurtle.jpg" class="project-img card-hover" loading="lazy">
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Kontakt -->
-  <section id="kontakt" class="container mx-auto py-20 px-4">
-    <h3 class="text-4xl font-bold text-center mb-10">Kontakt</h3>
-    <form class="max-w-2xl mx-auto space-y-6">
-      <input type="text" placeholder="Imię i nazwisko" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-blue-400 shadow-sm transition">
-      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-blue-400 shadow-sm transition">
-      <textarea placeholder="Wiadomość" rows="5" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-blue-400 shadow-sm transition"></textarea>
-      <button type="submit" class="form-button w-full">Wyślij wiadomość</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-white py-8">
-    <div class="container mx-auto text-center text-gray-500 text-sm px-4">
-      &copy; 2025 Wiktor Poczta. Wszelkie prawa zastrzeżone.
+<!-- Inne -->
+<div id="inne" class="project-category mb-12">
+  <div class="category-title-bg">
+    <h4 class="category-title">Inne</h4>
+  </div>
+  <div class="category-bg">
+    <div class="flex flex-col gap-8">
+      <img src="Browser Layout-1.jpg" class="project-img card-hover" loading="lazy" alt="Inny projekt 1">
+      <img src="Browser Layout-2.jpg" class="project-img card-hover" loading="lazy" alt="Inny projekt 2">
     </div>
-  </footer>
+  </div>
+</div>
+
+<!-- O mnie -->
+<section id="o-mnie" class="py-20" style="background-color: var(--primary-bg);">
+  <div class="container mx-auto text-center px-4">
+    <h3 class="text-5xl font-bold mb-10">O mnie</h3>
+    <p class="max-w-2xl mx-auto text-lg leading-relaxed">
+      Jestem pasjonatem grafiki komputerowej z doświadczeniem w projektowaniu logo, identyfikacji wizualnej, stron internetowych i ilustracji.
+    </p>
+  </div>
+</section>
+
+<!-- Kontakt -->
+<section id="kontakt" class="container mx-auto py-20 px-4">
+  <h3 class="text-4xl font-bold text-center mb-10">Kontakt</h3>
+  <form class="max-w-2xl mx-auto space-y-6">
+    <input type="text" placeholder="Imię i nazwisko" class="w-full p-4 rounded-xl border border-gray-300">
+    <input type="email" placeholder="Email" class="w-full p-4 rounded-xl border border-gray-300">
+    <textarea placeholder="Wiadomość" rows="5" class="w-full p-4 rounded-xl border border-gray-300"></textarea>
+    <button type="submit" class="form-button w-full">Wyślij wiadomość</button>
+  </form>
+</section>
+
+<script>
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+  const toggleBtn = document.getElementById("toggleTheme");
+  const themeIcon = document.getElementById("themeIcon");
+
+  window.onscroll = function () {
+    scrollToTopBtn.style.display =
+      document.documentElement.scrollTop > 200 ? "block" : "none";
+  };
+
+  scrollToTopBtn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  toggleBtn.addEventListener("click", function () {
+    const html = document.documentElement;
+    if (html.classList.contains("dark")) {
+      html.classList.remove("dark");
+      html.classList.add("light");
+      themeIcon.classList.remove("fa-moon");
+      themeIcon.classList.add("fa-sun");
+    } else {
+      html.classList.remove("light");
+      html.classList.add("dark");
+      themeIcon.classList.remove("fa-sun");
+      themeIcon.classList.add("fa-moon");
+    }
+  });
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("translate-x-full");
+  }
+</script>
 
 </body>
 </html>
